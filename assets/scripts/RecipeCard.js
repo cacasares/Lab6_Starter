@@ -7,12 +7,14 @@ class RecipeCard extends HTMLElement {
 		super(); // Inherit everything from HTMLElement
 
 		// EXPOSE - START (All expose numbers start with A)
-		// A1. Attach the shadow DOM to this Web Component (leave the mode open) // from https:// developer.mozilla. org/en-US/docs/Web/API/Web_components/Using_shadow_DOM
+		// A1. Attach the shadow DOM to this Web Component (leave the mode open) 
+    // // from https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM
 		this.shadow= this.attachShadow({mode: "open"});
-		// A2. Create an <article> element - This will hold our markup once our data is set // custom element from https:// developer.mozilla. org/en-US/docs/Web/API/Web_components/Using_custom_elements
-    // THIS VS CONST?
+		// A2. Create an <article> element - This will hold our markup once our data is set // custom element from 
+    // https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
 		const article = document.createElement("article");
-		// A3. Create a style element - This will hold all of the styles for the Web Component // custom element from https:// developer.mozilla. org/en-US/docs/Web/API/Web_components/Using_custom_elements
+		// A3. Create a style element - This will hold all of the styles for the Web Component 
+    // // custom element from https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
 		const style = document.createElement("style");
 		// A4. Insert all of the styles from cardTemplate.html into the <style> element you just made (copy everything INSIDE the <style> tag>) // from https:// developer.mozilla. org/en-US/docs/Web/API/Web_components/Using_custom_elements
 		style.textContent = `
@@ -92,7 +94,8 @@ class RecipeCard extends HTMLElement {
         font-size: 12px;
       }
 	`;
-		// A5. Append the <style> and <article> elements to the Shadow DOM // from https:// developer.mozilla. org/en-US/docs/Web/API/Web_components/Using_custom_elements, attach created elements to the shadow dom
+		// A5. Append the <style> and <article> elements to the Shadow DOM 
+    // from https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements, attach created elements to the shadow dom
 		this.shadow.appendChild(style);
 		this.shadow.appendChild(article);
 	}
@@ -123,7 +126,6 @@ class RecipeCard extends HTMLElement {
 		if (!data) return;
 
 		// A6. Select the <article> we added to the Shadow DOM in the constructor
-    //FIX?
 		const article = this.shadow.querySelector("article");
 		// A7. Set the contents of the <article> with the <article> template given in
 		//           cardTemplate.html and the data passed in (You should only have one <article>,
@@ -142,7 +144,7 @@ class RecipeCard extends HTMLElement {
       <p class="organization">${data.organization}</p>
       <div class="rating">
       <span>${data.rating}</span>
-      <img src="/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
+      <img src="assets/images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
       <span>(${data.numRatings})</span>
       </div>
       <time>${data.lengthTime}</time>
@@ -153,6 +155,7 @@ class RecipeCard extends HTMLElement {
 	  }
   }
 
-// A8. TODO - Define the Class as a customElement so that you can create
-//           'recipe-card' elements from https: //developer.mozilla. org/en-US/docs/Web/API/Web_components/Using_custom_elements
+// A8. Define the Class as a customElement so that you can create
+//           'recipe-card' elements 
+// from https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements
 customElements.define("recipe-card", RecipeCard);

@@ -25,12 +25,12 @@ function getRecipesFromStorage() {
 	//           header. It is possible in only a single line, but should
 	//           be no more than a few lines.
 	//if nothing found in localStorage for "recipes"
-	// CHECK IF NULL CHECK IS POSSIBLE
+	// check if null
 	if (localStorage.getItem("recipes")==null){
 		return [];
 	}
 	else{
-		return JSON.parse(locationStorage.getItem("recipes"));
+		return JSON.parse(localStorage.getItem("recipes"));
 	}
 
 }
@@ -45,7 +45,7 @@ function getRecipesFromStorage() {
 function addRecipesToDocument(recipes) {
 	// A10. Get a reference to the <main> element
 	const main = document.querySelector("main"); 
-	// A11. TODO - Loop through each of the recipes in the passed in array,
+	// A11. Loop through each of the recipes in the passed in array,
 	//            create a <recipe-card> element for each one, and populate
 	//            each <recipe-card> with that recipe data using element.data = ...
 	//            Append each element to <main>
@@ -67,7 +67,7 @@ function saveRecipesToStorage(recipes) {
 	// B1. Complete the functionality as described in this function
 	//            header. It is possible in only a single line, but should
 	//            be no more than a few lines.
-	// from https:// developer.mozilla. org/en-US/docs/Web/API/Window/localStorage
+	// from https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 	localStorage.setItem("recipes", JSON.stringify(recipes));
 }
 
@@ -86,21 +86,20 @@ function initFormHandler() {
 
 	// Steps B4-B9 will occur inside the event listener from step B3
 	// B4. Create a new FormData object from the <form> element reference above
-	// referenced https ://developer.mozilla. org/en-US/docs/Web/API/FormData/FormData
+	// referenced https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
 	const formData= new FormData(form);
 	// B5. Create an empty object (we'll refer to this object as recipeObject to
 	//            make this easier to read), and then extract the keys and corresponding
 	//            values from the FormData object and insert them into recipeObject
 	const recipeObject = {};
-	// referenced https: //developer.mozilla. org/en-US/docs/Web/API/FormData/entries
-	for (const [key,value] of formData.entries()) {
+	// referenced https://developer.mozilla.org/en-US/docs/Web/API/FormData/entries
+	formData.forEach((value,key) => {
 		recipeObject[key] = value;
-	}
+	});
 	// B6. Create a new <recipe-card> element
-	//CHANGE TO NEWRECIPECARD
 	const newRecipeCard = document.createElement("recipe-card");
 	// B7. Add the recipeObject data to <recipe-card> using element.data
-	newCard.data = recipeObject; 
+	newRecipeCard.data = recipeObject; 
 	// Append this new <recipe-card> to <main>
 	document.querySelector("main").appendChild(newRecipeCard); 
 	// B9. Get the recipes array from localStorage, add this new recipe to it, and
@@ -113,12 +112,13 @@ function initFormHandler() {
 	//query from index . html line 73
 	const clearButton = document.querySelector("button.danger");
 	// B11. Add a click event listener to clear local storage button
-	// reference from https ://developer.mozilla .org/en-US/docs/Web/API/EventTarget/addEventListener
+	// reference from https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 	clearButton.addEventListener("click", () => {
 
 
 	// Steps B12 & B13 will occur inside the event listener from step B11
-	// B12. Clear the local storage // from https: //developer.mozilla. org/en-US/docs/Web/API/Window/localStorage
+	// B12. Clear the local storage 
+	// // from https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 	localStorage.clear();
 	// B13. Delete the contents of <main> 
 	// contents of main deleted
