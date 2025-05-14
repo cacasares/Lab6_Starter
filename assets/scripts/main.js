@@ -77,9 +77,9 @@ function saveRecipesToStorage(recipes) {
  */
 function initFormHandler() {
 	// B2. Get a reference to the <form> element
-	//LOOK AT GET BY ID NEW-RECIPE INSTEAD?
-	const form = document.querySelector("form");
-	// B3. TODO - Add an event listener for the 'submit' event, which fires when the
+	//get reference to form element with id new-recipe
+	const form = document.getElementById("new-recipe");
+	// B3. Add an event listener for the 'submit' event, which fires when the
 	//            submit button is clicked
 	form.addEventListener("submit", (event) => {
 		event.preventDefault()
